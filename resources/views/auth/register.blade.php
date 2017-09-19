@@ -12,9 +12,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                            <label for="gender" class="col-md-4 control-label">Gender</label>
-
-                            
+                            <label for="gender" class="col-md-4 control-label">Gender</label>                            
                             <div class="col-md-6">
                                 <select id="gender"class="form-control" name="gender" value="{{ old('gender') }}">
                                 <option value="1">Male</option>
