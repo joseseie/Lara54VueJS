@@ -23,7 +23,6 @@ class ProfileController extends Controller
 
     public function update(Request $r)
     {
-//        dd($r->all());
         $this->validate($r,[
             'location' => 'required',
             'about' => 'required|max:255'
@@ -40,7 +39,7 @@ class ProfileController extends Controller
                 'avatar' => $r->avatar ->store('public/avatars')
             ]);
         }
-
+        dd($r>all());
         Session::flash('success','perfil actualizado.');
 
         return redirect()->back();
