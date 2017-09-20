@@ -78,5 +78,16 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    {{--Mostrando as notificacaoes--}}
+    <script>
+        @if(Session::has('success'))
+            noty({
+                type: 'success',
+                layout: 'top',
+                text: '{{Session::get('success')}}'
+            });
+        @endif
+    </script>
 </body>
 </html>
