@@ -29,6 +29,11 @@ class FriendshipsController extends Controller
     }
 
 
+    public function add_friend($id)
+    {
+        //sending notifications, emails, broadcasting...
+        return Auth::user()->add_friend($id);
+    }
 
 
 }

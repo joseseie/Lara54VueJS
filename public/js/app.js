@@ -45125,16 +45125,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
+        var _this = this;
 
         this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (resp) {
             console.log(resp);
+            _this.status = resp.body.status;
+            _this.loading = false;
         });
     },
 
-    props: ['profile_user_id']
+    props: ['profile_user_id'],
+    data: function data() {
+        return {
+            status: '',
+            loading: true
+        };
+    },
+
+    methods: {
+        add_friend: function add_friend() {
+            var _this2 = this;
+
+            this.loading = true;
+            this.$http.get('/add_friend/' + this.profile_user_id).then(function (r) {
+                if (r.body == 1) {
+                    _this2.status = 'waiting';
+                    _this2.loading = false;
+                }
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -45145,20 +45175,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticStyle: { "padding-top": "5px" } }, [
+    _vm.loading
+      ? _c("p", { staticClass: "text-center" }, [
+          _vm._v("\n        Loading ...\n    ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.loading
+      ? _c("p", { staticClass: "text-center" }, [
+          _vm.status == 0
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  on: { click: _vm.add_friend }
+                },
+                [_vm._v("Add Friend")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.status == "pending"
+            ? _c("button", { staticClass: "btn btn-success" }, [
+                _vm._v("Accept Friend")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.status == "waiting"
+            ? _c("span", { staticClass: "text-success" }, [
+                _vm._v("waiting for response")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.status == "Friends"
+            ? _c("span", { staticClass: "text-success" }, [_vm._v("Friends")])
+            : _vm._e()
+        ])
+      : _vm._e()
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _vm._v("\n\n        Componente Functionando com sucesso.\n\n\n    ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
