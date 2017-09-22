@@ -15,7 +15,7 @@ trait Friendable {
         {
             return "Voces ja sao amigos";
         }
-        if($this->has_pending_friend_request_to($user_requested_id) === 1)
+        if($this->has_pending_friend_request_sent_to($user_requested_id) === 1)
         {
             return "Ja enviou o pedido de amizade.";
         }
@@ -136,7 +136,7 @@ trait Friendable {
         }
     }
 
-    public function has_pending_friend_request_to($user_id)
+    public function has_pending_friend_request_sent_to($user_id)
     {
 
         if(in_array($user_id,$this->pending_friend_requests_sent_ids()))

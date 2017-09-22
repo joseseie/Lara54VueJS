@@ -829,10 +829,11 @@ __webpack_require__(15);
 window.Vue = __webpack_require__(16);
 __webpack_require__(51);
 
-Vue.http.interceptors.push(function (request, next) {
-  request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-  next();
-});
+// Vue.http.interceptors.push((request,next) => {
+//     request.headers.set('X-CSRF-TOKEN',Laravel.csrfToken);
+//     next();
+// });
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
