@@ -59,14 +59,14 @@
                    this.$http.get('/accept_friend/' + this.profile_user_id)
                        .then((r) => {
                            if(r.body == 1){
-                                        this.status = 'friends'
-                                        noty({
-                                             type: 'success',
-                                                                        layout: 'bottomLeft',
-                                                                        text: 'You are now friends .'
-                                                                    })
+                               this.status = 'friends'
+                                   noty({
+                                        type: 'success',
+                                        layout: 'bottomLeft',
+                                        text: 'You are now friends .'
+                                        })
                                         this.loading = false
-                                    }
+                                   }
                                 })
             }
 
