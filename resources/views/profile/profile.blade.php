@@ -38,7 +38,7 @@
 
                 <div class="body">
 
-                    <friend></friend>
+                    <friend :profile_user_id="{{$user->id}}"></friend>
 
                 </div>
 

@@ -45127,8 +45127,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        this.$http.get('/check_relationship_status/' + this.profile_user_id);
-    }
+
+        this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (resp) {
+            console.log(resp);
+        });
+    },
+
+    props: ['profile_user_id']
 });
 
 /***/ }),
