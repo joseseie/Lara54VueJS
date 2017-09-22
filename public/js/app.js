@@ -45163,6 +45163,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.loading = false;
                 }
             });
+        },
+        accept_friend: function accept_friend() {
+            var _this3 = this;
+
+            this.loading = true;
+            this.$http.get('/accept_friend/' + this.profile_user_id).then(function (r) {
+                if (r.body == 1) {
+                    _this3.status = 'friends';
+                    _this3.loading = false;
+                }
+            });
         }
     }
 });
@@ -45196,9 +45207,14 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm.status == "pending"
-            ? _c("button", { staticClass: "btn btn-success" }, [
-                _vm._v("Accept Friend")
-              ])
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  on: { click: _vm.accept_friend }
+                },
+                [_vm._v("Accept Friend")]
+              )
             : _vm._e(),
           _vm._v(" "),
           _vm.status == "waiting"
@@ -45207,7 +45223,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.status == "Friends"
+          _vm.status == "friends"
             ? _c("span", { staticClass: "text-success" }, [_vm._v("Friends")])
             : _vm._e()
         ])

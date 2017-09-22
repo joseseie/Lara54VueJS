@@ -34,15 +34,17 @@
 
             </div>
 
-            <div class="panel panel-default">
+            @if(Auth::id() !== $user->id)
+                <div class="panel panel-default">
 
-                <div class="body">
+                    <div class="body">
 
-                    <friend :profile_user_id="{{$user->id}}"></friend>
+                        <friend :profile_user_id="{{$user->id}}"></friend>
+
+                    </div>
 
                 </div>
-
-            </div>
+            @endif
 
             <div class="panel panel-default">
 
