@@ -20,6 +20,13 @@ require('noty');
  */
 
 window.Vue = require('vue');
+require('vue-resource');
+
+Vue.http.interceptors.push((request,next) => {
+    request.headers.set('X-CSRF-TOKEN',Laravel.csrfToken);
+    next();
+});
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

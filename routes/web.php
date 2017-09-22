@@ -18,7 +18,7 @@ Route::get('/add_friend',function (){
     return \App\User::find(1)->add_friend(4);
 });
 Route::get('/accept_friend',function (){
-    return \App\User::find(4)->accept_friendship(1);
+    return \App\User::find(4)->accept_friend(1);
 });
 Route::get('/friends',function (){
     return \App\User::find(1)->friends();
@@ -33,7 +33,9 @@ Route::get('/ids',function (){
 Route::get('/is',function (){
     return \App\User::find(1)->is_friends_with(30);
 });
-
+Route::get('/ch',function (){
+    return \App\User::find(5)->add_friend(2);
+});
 
 Auth::routes();
 

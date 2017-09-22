@@ -36,9 +36,21 @@
 
             <div class="panel panel-default">
 
+                <div class="body">
+
+                    <friend></friend>
+
+                </div>
+
+            </div>
+
+            <div class="panel panel-default">
+
                 <div class="panel-heading">
 
-                    About me
+                    <p class="text-center">
+                        About me
+                    </p>
 
                 </div>
 
