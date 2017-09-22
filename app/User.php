@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Notifications\Friendable;
+use App\Traints\Friendable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

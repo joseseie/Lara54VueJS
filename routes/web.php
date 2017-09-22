@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/hello',function (){
-//    return Auth::user()->teste();
     return Auth::user()->hello();
 });
 

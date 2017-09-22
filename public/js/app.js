@@ -30622,7 +30622,7 @@ if (typeof jQuery === 'undefined') {
 
 /* 
   @package NOTY - Dependency-free notification library 
-  @version version: 3.1.2 
+  @version version: 3.1.3 
   @contributors https://github.com/needim/noty/graphs/contributors 
   @documentation Examples and Documentation - http://needim.github.com/noty 
   @license Licensed under the MIT licenses: http://www.opensource.org/licenses/mit-license.php 
@@ -33441,7 +33441,7 @@ var Noty = function () {
   }, {
     key: 'version',
     value: function version() {
-      return "3.1.2";
+      return "3.1.3";
     }
 
     /**
