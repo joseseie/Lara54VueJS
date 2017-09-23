@@ -67,7 +67,7 @@
                                         })
                                         this.loading = false
                                    }
-                                })
+                       })
             }
 
         }
