@@ -5,7 +5,7 @@
 </template>
 
 <script>
-
+    import Noty from 'noty';
     export default {
 
         mounted(){
@@ -18,18 +18,24 @@
             listen(){
                 Echo.private('App.User.' + this.id)
                     .notification((notification) => {
-//                        noty()({
-//                            type: 'success',
-//                            layout: 'bottomLeft',
-//                            text: notification.name + notification.message
-//                        })
-//                        document.getElementById("noty_audio").play()
+                        new Noty({
+                            type: 'success',
+                            layout: 'bottomLeft',
+                            text: notification.name + notification.message
+                        }).show();
+
+                        document.getElementById("noty_audio").play()
 
                     })
             },
             teste(){
-                console.log('Mensagem de teste')
-                alert('componente funcionando.')
+                new Noty({
+                    type: 'success',
+                    layout: 'bottomLeft',
+                    text: 'Mensagem de teste de Noty, Parabens noty funciona bem'
+                }).show();
+                alert('funcao teste\nTeste de recursos')
+                
             }
         }
 

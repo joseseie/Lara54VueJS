@@ -77,9 +77,11 @@
 
         <notification :id="{{Auth::id()}}"></notification>
 
-        <audeo id="noty_audio">
-            <sorce src="{{asset('audeos/notification48.mp3')}}" ></sorce>
-        </audeo>
+        {{--<audeo id="noty_audio">--}}
+            {{--<sorce src="{{asset('audeos/notification48.mp3')}}" ></sorce>--}}
+        {{--</audeo>--}}
+
+        <notify :text="Olanotificacao" :type= "success" :layout= "top" ></notify>
 
     </div>
 
@@ -88,13 +90,18 @@
 
     {{--Mostrando as notificacaoes--}}
     <script>
+
         @if(Session::has('success'))
-            noty({
-                type: 'success',
-                layout: 'top',
-                text: '{{Session::get('success')}}'
-            });
+            {{--new Noty({--}}
+                {{--type: 'success',--}}
+                {{--layout: 'top',--}}
+                {{--text: '{{Session::get('success')}}'--}}
+            {{--}).show();--}}
         @endif
     </script>
+    @if(Session::has('success'))
+        <h1>Teste: {{Session::get('success')}}</h1>
+    @endif
+    <h1>Teste incondicional</h1>
 </body>
 </html>
