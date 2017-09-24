@@ -29,6 +29,11 @@ Route::get('/accept_friend/{id}',[
 Route::get('get_unread',function(){
     return Auth::user()->unreadNotifications;
 });
+Route::get('/notifications',[
+    'uses' => 'HomeController@notifications',
+    'as' => 'notifications'
+]);
+
 
 Auth::routes();
 
