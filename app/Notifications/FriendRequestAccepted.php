@@ -8,7 +8,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class FriendRequestAccepted extends Notification
-{
+implements ShouldQueue{
+
     use Queueable;
     public $user;
 

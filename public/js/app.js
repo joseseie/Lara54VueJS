@@ -51841,9 +51841,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         listen: function listen() {
             Echo.private('App.User.' + this.id).notification(function (notification) {
-                alert('New notification');
-                console.log(notification);
-                console.log('Teste Jose seie componente good.');
+
+                noty()({
+                    type: 'success',
+                    layout: 'bottomLeft',
+                    text: notification.name + notification.message()
+                });
+                document.getElementById("noty_audio").play();
             });
         },
         teste: function teste() {

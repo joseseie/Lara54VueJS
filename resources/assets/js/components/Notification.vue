@@ -18,10 +18,15 @@
             listen(){
                 Echo.private('App.User.' + this.id)
                     .notification((notification) => {
-                        alert('New notification')
-                        console.log(notification)
-                        console.log('Teste Jose seie componente good.')
-                    })
+
+                        noty()({
+                            type: 'success',
+                            layout: 'bottomLeft',
+                            text: notification.name + notification.message()
+                        });
+                        document.getElementById("noty_audio").play()
+
+                    });
             },
             teste(){
                 console.log('Mensagem de teste')
