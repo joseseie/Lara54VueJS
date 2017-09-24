@@ -12,7 +12,7 @@
                         <br>
 
                         <button class="btn btn-success pull-right"
-                        :disabled="not_working">
+                        :disabled="not_working" @click="create_post()">
                             Create a Post
                         </button>
                     </div>
@@ -37,7 +37,7 @@
         },
         methods: {
             create_post() {
-                this.$http.post('/create/')
+                this.$http.post('/create/post',{ content: this.content })
                     .then((resp) => {
                         console.log(resp);
                     })

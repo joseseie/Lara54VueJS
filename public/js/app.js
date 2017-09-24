@@ -53120,7 +53120,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         create_post: function create_post() {
-            this.$http.post('/create/').then(function (resp) {
+            this.$http.post('/create/post', { content: this.content }).then(function (resp) {
                 console.log(resp);
             });
         }
@@ -53173,7 +53173,12 @@ var render = function() {
               "button",
               {
                 staticClass: "btn btn-success pull-right",
-                attrs: { disabled: _vm.not_working }
+                attrs: { disabled: _vm.not_working },
+                on: {
+                  click: function($event) {
+                    _vm.create_post()
+                  }
+                }
               },
               [
                 _vm._v(

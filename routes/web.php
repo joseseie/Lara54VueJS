@@ -33,6 +33,9 @@ Route::get('/notifications',[
     'uses' => 'HomeController@notifications',
     'as' => 'notifications'
 ]);
+Route::post('/create/post',[
+    'uses' => 'PostsController@store'
+]);
 
 
 Auth::routes();
