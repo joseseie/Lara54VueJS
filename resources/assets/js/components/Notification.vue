@@ -18,15 +18,14 @@
             listen(){
                 Echo.private('App.User.' + this.id)
                     .notification((notification) => {
+//                        noty()({
+//                            type: 'success',
+//                            layout: 'bottomLeft',
+//                            text: notification.name + notification.message
+//                        })
+//                        document.getElementById("noty_audio").play()
 
-                        noty()({
-                            type: 'success',
-                            layout: 'bottomLeft',
-                            text: notification.name + notification.message()
-                        });
-                        document.getElementById("noty_audio").play()
-
-                    });
+                    })
             },
             teste(){
                 console.log('Mensagem de teste')

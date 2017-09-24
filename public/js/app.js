@@ -870,7 +870,7 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(48);
+module.exports = __webpack_require__(46);
 
 
 /***/ }),
@@ -892,8 +892,8 @@ __webpack_require__(11);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('friend', __webpack_require__(42));
-Vue.component('notification', __webpack_require__(45));
+Vue.component('friend', __webpack_require__(40));
+Vue.component('notification', __webpack_require__(43));
 
 var app = new Vue({
   el: '#app'
@@ -905,7 +905,7 @@ var app = new Vue({
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_laravel_echo__);
 
 window._ = __webpack_require__(12);
@@ -956,7 +956,7 @@ window.axios.defaults.headers.common = {
  */
 
 
-window.Pusher = __webpack_require__(41);
+window.Pusher = __webpack_require__(57);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
   broadcaster: 'pusher',
@@ -46660,6 +46660,324 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(8)
+/* script */
+var __vue_script__ = __webpack_require__(41)
+/* template */
+var __vue_template__ = __webpack_require__(42)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Friend.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Friend.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-372dd632", Component.options)
+  } else {
+    hotAPI.reload("data-v-372dd632", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        var _this = this;
+
+        this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (resp) {
+            console.log(resp);
+            _this.status = resp.body.status;
+            _this.loading = false;
+        });
+    },
+
+    props: ['profile_user_id'],
+    data: function data() {
+        return {
+            status: '',
+            loading: true
+        };
+    },
+
+    methods: {
+        add_friend: function add_friend() {
+            var _this2 = this;
+
+            this.loading = true;
+            this.$http.get('/add_friend/' + this.profile_user_id).then(function (r) {
+                if (r.body == 1) {
+                    _this2.status = 'waiting';
+                    _this2.loading = false;
+
+                    noty({
+                        type: 'success',
+                        layout: 'bottomLeft',
+                        text: 'Friend request sent .'
+                    });
+                }
+            });
+        },
+        accept_friend: function accept_friend() {
+            var _this3 = this;
+
+            this.loading = true;
+            this.$http.get('/accept_friend/' + this.profile_user_id).then(function (r) {
+                if (r.body == 1) {
+                    _this3.status = 'friends';
+                    noty({
+                        type: 'success',
+                        layout: 'bottomLeft',
+                        text: 'You are now friends .'
+                    });
+                    _this3.loading = false;
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticStyle: { "padding-top": "5px" } }, [
+    _vm.loading
+      ? _c("p", { staticClass: "text-center" }, [
+          _vm._v("\n        Loading ...\n    ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.loading
+      ? _c("p", { staticClass: "text-center" }, [
+          _vm.status == 0
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  on: { click: _vm.add_friend }
+                },
+                [_vm._v("Add Friend")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.status == "pending"
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  on: { click: _vm.accept_friend }
+                },
+                [_vm._v("Accept Friend")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.status == "waiting"
+            ? _c("span", { staticClass: "text-success" }, [
+                _vm._v("waiting for response")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.status == "friends"
+            ? _c("span", { staticClass: "text-success" }, [_vm._v("Friends")])
+            : _vm._e()
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-372dd632", module.exports)
+  }
+}
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(8)
+/* script */
+var __vue_script__ = __webpack_require__(44)
+/* template */
+var __vue_template__ = __webpack_require__(45)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Notification.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Notification.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-45750e02", Component.options)
+  } else {
+    hotAPI.reload("data-v-45750e02", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        //    this.teste()
+        this.listen();
+    },
+
+    props: ['id'],
+    methods: {
+        listen: function listen() {
+            Echo.private('App.User.' + this.id).notification(function (notification) {
+                //                        noty()({
+                //                            type: 'success',
+                //                            layout: 'bottomLeft',
+                //                            text: notification.name + notification.message
+                //                        })
+                //                        document.getElementById("noty_audio").play()
+
+            });
+        },
+        teste: function teste() {
+            console.log('Mensagem de teste');
+            alert('componente funcionando.');
+        }
+    }
+
+});
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("Teste")])])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-45750e02", module.exports)
+  }
+}
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */
 /***/ (function(module, exports) {
 
 var asyncGenerator = function () {
@@ -47445,7 +47763,7 @@ var Echo = function () {
 module.exports = Echo;
 
 /***/ }),
-/* 41 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -51581,315 +51899,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(8)
-/* script */
-var __vue_script__ = __webpack_require__(43)
-/* template */
-var __vue_template__ = __webpack_require__(44)
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Friend.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Friend.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-372dd632", Component.options)
-  } else {
-    hotAPI.reload("data-v-372dd632", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        var _this = this;
-
-        this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (resp) {
-            console.log(resp);
-            _this.status = resp.body.status;
-            _this.loading = false;
-        });
-    },
-
-    props: ['profile_user_id'],
-    data: function data() {
-        return {
-            status: '',
-            loading: true
-        };
-    },
-
-    methods: {
-        add_friend: function add_friend() {
-            var _this2 = this;
-
-            this.loading = true;
-            this.$http.get('/add_friend/' + this.profile_user_id).then(function (r) {
-                if (r.body == 1) {
-                    _this2.status = 'waiting';
-                    _this2.loading = false;
-
-                    noty({
-                        type: 'success',
-                        layout: 'bottomLeft',
-                        text: 'Friend request sent .'
-                    });
-                }
-            });
-        },
-        accept_friend: function accept_friend() {
-            var _this3 = this;
-
-            this.loading = true;
-            this.$http.get('/accept_friend/' + this.profile_user_id).then(function (r) {
-                if (r.body == 1) {
-                    _this3.status = 'friends';
-                    noty({
-                        type: 'success',
-                        layout: 'bottomLeft',
-                        text: 'You are now friends .'
-                    });
-                    _this3.loading = false;
-                }
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticStyle: { "padding-top": "5px" } }, [
-    _vm.loading
-      ? _c("p", { staticClass: "text-center" }, [
-          _vm._v("\n        Loading ...\n    ")
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    !_vm.loading
-      ? _c("p", { staticClass: "text-center" }, [
-          _vm.status == 0
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  on: { click: _vm.add_friend }
-                },
-                [_vm._v("Add Friend")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.status == "pending"
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  on: { click: _vm.accept_friend }
-                },
-                [_vm._v("Accept Friend")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.status == "waiting"
-            ? _c("span", { staticClass: "text-success" }, [
-                _vm._v("waiting for response")
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.status == "friends"
-            ? _c("span", { staticClass: "text-success" }, [_vm._v("Friends")])
-            : _vm._e()
-        ])
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-372dd632", module.exports)
-  }
-}
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(8)
-/* script */
-var __vue_script__ = __webpack_require__(46)
-/* template */
-var __vue_template__ = __webpack_require__(47)
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Notification.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Notification.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-45750e02", Component.options)
-  } else {
-    hotAPI.reload("data-v-45750e02", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 46 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        //    this.teste()
-        this.listen();
-    },
-
-    props: ['id'],
-    methods: {
-        listen: function listen() {
-            Echo.private('App.User.' + this.id).notification(function (notification) {
-
-                noty()({
-                    type: 'success',
-                    layout: 'bottomLeft',
-                    text: notification.name + notification.message()
-                });
-                document.getElementById("noty_audio").play();
-            });
-        },
-        teste: function teste() {
-            console.log('Mensagem de teste');
-            alert('componente funcionando.');
-        }
-    }
-
-});
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Teste")])])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-45750e02", module.exports)
-  }
-}
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

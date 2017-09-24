@@ -77,6 +77,10 @@
 
         <notification :id="{{Auth::id()}}"></notification>
 
+        <audeo id="noty_audio">
+            <sorce src="{{asset('audeos/notification48.mp3')}}" ></sorce>
+        </audeo>
+
     </div>
 
     <!-- Scripts -->
