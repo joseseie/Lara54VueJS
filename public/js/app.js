@@ -3972,7 +3972,7 @@ __webpack_require__(12);
 
 Vue.component('friend', __webpack_require__(42));
 Vue.component('notification', __webpack_require__(45));
-Vue.component('notify', __webpack_require__(48));
+Vue.component('notifyUpdate', __webpack_require__(48));
 
 var app = new Vue({
   el: '#app'
@@ -51915,9 +51915,9 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\Notificate.vue"
+Component.options.__file = "resources\\assets\\js\\components\\NotificateUpdate.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Notificate.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] NotificateUpdate.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -51926,9 +51926,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0a5512c8", Component.options)
+    hotAPI.createRecord("data-v-1b5c27f6", Component.options)
   } else {
-    hotAPI.reload("data-v-0a5512c8", Component.options)
+    hotAPI.reload("data-v-1b5c27f6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -51953,17 +51953,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        this.notify();
-    },
-
-    props: ['type', 'layout', 'text'],
     methods: {
-        notify: function notify() {
+        notifyUpdate: function notifyUpdate() {
             new __WEBPACK_IMPORTED_MODULE_0_noty___default.a({
-                type: this.type,
-                layout: this.layout,
-                text: 'this.text'
+                type: 'success',
+                layout: 'top',
+                text: 'Dados actualizados com sucesso.'
             }).show();
 
             alert('Notificando o utilizador');
@@ -51988,7 +51983,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0a5512c8", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-1b5c27f6", module.exports)
   }
 }
 

@@ -78,30 +78,18 @@
         <notification :id="{{Auth::id()}}"></notification>
 
         {{--<audeo id="noty_audio">--}}
-            {{--<sorce src="{{asset('audeos/notification48.mp3')}}" ></sorce>--}}
+            {{--<source src="{{asset('audeos/notification48.mp3')}}" ></source>--}}
         {{--</audeo>--}}
 
-        <notify :text="Olanotificacao" :type= "success" :layout= "top" ></notify>
+
+        {{--Mostrando as notificacaoes--}}
+        @if(Session::has('success'))
+            <notify></notify>
+        @endif
 
     </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-
-    {{--Mostrando as notificacaoes--}}
-    <script>
-
-        @if(Session::has('success'))
-            {{--new Noty({--}}
-                {{--type: 'success',--}}
-                {{--layout: 'top',--}}
-                {{--text: '{{Session::get('success')}}'--}}
-            {{--}).show();--}}
-        @endif
-    </script>
-    @if(Session::has('success'))
-        <h1>Teste: {{Session::get('success')}}</h1>
-    @endif
-    <h1>Teste incondicional</h1>
 </body>
 </html>
