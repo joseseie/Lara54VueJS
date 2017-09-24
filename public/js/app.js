@@ -51682,6 +51682,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -51689,7 +51693,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        get_feet: function get_feet() {
+        get_feed: function get_feed() {
             var _this = this;
 
             this.$http.get('/feed').then(function (response) {
@@ -51720,7 +51724,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-lg-10 col-lg-offset-1" },
+        { staticClass: "col-md-8 col-md-offset-2" },
         _vm._l(_vm.posts, function(post) {
           return _c("div", { staticClass: "panel panel-default" }, [
             _c("div", { staticClass: "panel-heading" }, [
@@ -51730,8 +51734,15 @@ var render = function() {
               _vm._v(
                 "\n                    " +
                   _vm._s(post.user.name) +
-                  "\n\n                "
-              )
+                  "\n\n                    "
+              ),
+              _c("span", { staticClass: "pull-right" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(post.created_at) +
+                    "\n                    "
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "panel-body" }, [

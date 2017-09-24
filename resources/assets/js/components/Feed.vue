@@ -4,7 +4,7 @@
 
         <div class="row">
 
-            <div class="col-lg-10 col-lg-offset-1">
+            <div class="col-md-8 col-md-offset-2">
 
                 <div class="panel panel-default" v-for="post in posts">
 
@@ -45,7 +45,7 @@
             this.get_feed()
         },
         methods: {
-            get_feet() {
+            get_feed() {
                 this.$http.get('/feed')
                     .then((response) => {
                         response.body.forEach((post) => {
