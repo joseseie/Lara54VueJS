@@ -51842,7 +51842,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -51876,14 +51875,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("li", [
-      _c("a", { attrs: { href: "/notifications" } }, [
-        _vm._v("\n            Unread notifications\n            "),
-        _c("span", { staticClass: "badge" }, [
-          _vm._v(_vm._s(_vm.all_nots_count))
-        ])
-      ])
+  return _c("li", [
+    _c("a", { attrs: { href: "/notifications" } }, [
+      _vm._v("\n        Unread notifications\n        "),
+      _c("span", { staticClass: "badge" }, [_vm._v(_vm._s(_vm.all_nots_count))])
     ])
   ])
 }
@@ -51968,12 +51963,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['id'],
     methods: {
         listen: function listen() {
+            var _this = this;
+
             Echo.private('App.User.' + this.id).notification(function (notification) {
                 new __WEBPACK_IMPORTED_MODULE_0_noty___default.a({
                     type: 'success',
                     layout: 'bottomLeft',
                     text: notification.name + notification.message
                 }).show();
+
+                _this.$store.commit('add_not', notification);
 
                 document.getElementById("noty_audio").play();
             });
