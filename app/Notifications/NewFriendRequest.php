@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class NewFriendRequest extends Notification implements ShouldQueue{
+
     use Queueable;
     public $user;
 

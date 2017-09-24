@@ -75,11 +75,14 @@
 
         @yield('content')
 
-        <notification :id="{{Auth::id()}}"></notification>
+        @if(Auth::check())
+            <notification :id="{{Auth::id()}}"></notification>
+        @endif
 
-        {{--<audeo id="noty_audio">--}}
-            {{--<source src="{{asset('audeos/notification48.mp3')}}" ></source>--}}
-        {{--</audeo>--}}
+        <audio id="noty_audio">
+            {{--<source src="horse.ogg" type="audio/ogg">--}}
+            <source src="{{asset('audeos/notification48.mp3')}}" type="audio/mpeg">
+        </audio>
 
 
         {{--Mostrando as notificacaoes--}}

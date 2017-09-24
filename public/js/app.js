@@ -3972,7 +3972,7 @@ __webpack_require__(12);
 
 Vue.component('friend', __webpack_require__(42));
 Vue.component('notification', __webpack_require__(45));
-Vue.component('notifyUpdate', __webpack_require__(48));
+Vue.component('notify', __webpack_require__(48));
 
 var app = new Vue({
   el: '#app'
@@ -51873,16 +51873,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div")
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Teste")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -51901,7 +51894,7 @@ var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(49)
 /* template */
-var __vue_template__ = __webpack_require__(50)
+var __vue_template__ = null
 /* styles */
 var __vue_styles__ = null
 /* scopeId */
@@ -51917,7 +51910,6 @@ var Component = normalizeComponent(
 )
 Component.options.__file = "resources\\assets\\js\\components\\NotificateUpdate.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] NotificateUpdate.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -51947,47 +51939,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_noty__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_noty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_noty__);
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        this.notify();
+    },
+
     methods: {
-        notifyUpdate: function notifyUpdate() {
+        notify: function notify() {
             new __WEBPACK_IMPORTED_MODULE_0_noty___default.a({
-                type: 'success',
-                layout: 'top',
-                text: 'Dados actualizados com sucesso.'
+                type: 'info',
+                layout: 'bottomLeft',
+                text: 'Os deus Dados de perfil foram actualizados com sucesso'
             }).show();
 
-            alert('Notificando o utilizador');
+            console.log('Notificando o utilizador');
         }
     }
 
 });
 
 /***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1b5c27f6", module.exports)
-  }
-}
-
-/***/ }),
+/* 50 */,
 /* 51 */
 /***/ (function(module, exports) {
 

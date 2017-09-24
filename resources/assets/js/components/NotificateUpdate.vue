@@ -1,19 +1,19 @@
-<template>
-    
-</template>
 
 <script>
     import Noty from 'noty';
     export default {
+        mounted() {
+            this.notify()
+        },
         methods: {
             notify(){
                 new Noty({
-                    type: 'stccess',
-                    layout: 'top',
-                    text: 'Dados actualizados com sucesso.'
+                    type: 'info',
+                    layout: 'bottomLeft',
+                    text: 'Os deus Dados de perfil foram actualizados com sucesso'
                 }).show();
 
-                alert('Notificando o utilizador')                
+                console.log('Notificando o utilizador')                
             }
         }
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Teste</h1>
+
     </div>
 </template>
 
@@ -21,7 +21,7 @@
                         new Noty({
                             type: 'success',
                             layout: 'bottomLeft',
-                            text: notification.name + notification.message
+                            text: notification.name  + notification.message
                         }).show();
 
                         document.getElementById("noty_audio").play()
@@ -33,7 +33,7 @@
                     type: 'success',
                     layout: 'bottomLeft',
                     text: 'Mensagem de teste de Noty, Parabens noty funciona bem'
-                }).show();
+                }).show()
                 alert('funcao teste\nTeste de recursos')
                 
             }
