@@ -6,17 +6,24 @@
 
             <div class="col-lg-10 col-lg-offset-1">
 
-                <div class="panel panel-default">
+                <div class="panel panel-default" v-for="post in posts">
 
-                    <div class="panel-heading text-center">
+                    <div class="panel-heading">
 
-                        Jsoe Seie
+                        <img :src="post.user.avatar" width="40px" height="40px"/>
+                        {{ post.user.name }}
+
+                        <span class="pull-right">
+                            {{ post.created_at }}
+                        </span>
 
                     </div>     
 
                     <div class="panel-body">
 
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
+                        <p class="text-center">
+                            {{ post.content }}
+                        </p>
 
                     </div>              
 
@@ -47,6 +54,11 @@
                         
                         })
                     })
+            }
+        },
+        computed: {
+            posts() {
+                return this.$store.getters.all_posts
             }
         }
 

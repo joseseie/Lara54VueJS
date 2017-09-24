@@ -51679,6 +51679,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -51696,6 +51699,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             });
         }
+    },
+    computed: {
+        posts: function posts() {
+            return this.$store.getters.all_posts;
+        }
     }
 
 });
@@ -51708,32 +51716,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-10 col-lg-offset-1" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading text-center" }, [
-              _vm._v("\n\n                    Jsoe Seie\n\n                ")
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-lg-10 col-lg-offset-1" },
+        _vm._l(_vm.posts, function(post) {
+          return _c("div", { staticClass: "panel panel-default" }, [
+            _c("div", { staticClass: "panel-heading" }, [
+              _c("img", {
+                attrs: { src: post.user.avatar, width: "40px", height: "40px" }
+              }),
+              _vm._v(
+                "\n                    " +
+                  _vm._s(post.user.name) +
+                  "\n\n                "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n\n                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.\n\n                "
-              )
+              _c("p", { staticClass: "text-center" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(post.content) +
+                    "\n                    "
+                )
+              ])
             ])
           ])
-        ])
-      ])
+        })
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -52440,6 +52456,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].Store({
         },
         all_nots_count: function all_nots_count(state) {
             return state.nots.length;
+        },
+        all_posts: function all_posts(state) {
+            return state.posts;
         }
     },
     mutations: {
