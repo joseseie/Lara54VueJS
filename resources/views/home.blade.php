@@ -4,4 +4,6 @@
 
     <post></post>
 
+    <feed></feed>
+
 @endsection
