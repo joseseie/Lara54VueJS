@@ -25,6 +25,17 @@
                             {{ post.content }}
                         </p>
 
+                        <button class="btn btn-xs btn-info">
+                            Like post
+                        </button>
+
+                        <hr>
+
+                        <img :src="post.user.avatar" alt="" width="20px" height="20px"/>
+                        <img :src="post.user.avatar" alt="" width="20px" height="20px"/>
+                        <img :src="post.user.avatar" alt="" width="20px" height="20px"/>
+                        <img :src="post.user.avatar" alt="" width="20px" height="20px"/>
+
                     </div>              
 
                 </div>

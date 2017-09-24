@@ -51686,6 +51686,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -51752,7 +51763,51 @@ var render = function() {
                     _vm._s(post.content) +
                     "\n                    "
                 )
-              ])
+              ]),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn btn-xs btn-info" }, [
+                _vm._v(
+                  "\n                        Like post\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("img", {
+                attrs: {
+                  src: post.user.avatar,
+                  alt: "",
+                  width: "20px",
+                  height: "20px"
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                attrs: {
+                  src: post.user.avatar,
+                  alt: "",
+                  width: "20px",
+                  height: "20px"
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                attrs: {
+                  src: post.user.avatar,
+                  alt: "",
+                  width: "20px",
+                  height: "20px"
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                attrs: {
+                  src: post.user.avatar,
+                  alt: "",
+                  width: "20px",
+                  height: "20px"
+                }
+              })
             ])
           ])
         })
