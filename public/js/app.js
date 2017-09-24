@@ -51680,7 +51680,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        this.get_feed();
+    },
+
+    methods: {
+        get_feet: function get_feet() {
+            var _this = this;
+
+            this.$http.get('/feed').then(function (response) {
+                response.body.forEach(function (post) {
+
+                    _this.$store.commit('add_post', post);
+                });
+            });
+        }
+    }
+
+});
 
 /***/ }),
 /* 44 */
@@ -52413,7 +52431,8 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_0_vuex
 var store = new __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].Store({
 
     state: {
-        nots: []
+        nots: [],
+        posts: []
     },
     getters: {
         all_nots: function all_nots(state) {
@@ -52426,6 +52445,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].Store({
     mutations: {
         add_not: function add_not(state, not) {
             state.nots.push(not);
+        },
+        add_post: function add_post(state, post) {
+            state.posts.push(post);
         }
     },
     actions: {}

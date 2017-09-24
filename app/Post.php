@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Posts extends Model
+class Post extends Model
 {
 
     public $with = ['user']; //Ja vai trazer o post junto com user como padrao.
