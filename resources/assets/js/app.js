@@ -21,6 +21,8 @@ Vue.component('notify', require('./components/NotificateUpdate.vue'));
 
 import { store } from './store'
 
+Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+
 const app = new Vue({
     el: '#app',
     store

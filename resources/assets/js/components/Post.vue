@@ -37,9 +37,14 @@
         },
         methods: {
             create_post() {
-                this.$http.post('/create/post',{ content: this.content })
+                this.$http.post('/create/post',{ conteudo: this.content })
                     .then((resp) => {
                         console.log(resp);
+                        new Noty({
+                            type: 'info',
+                            layout: 'bottomLeft',
+                            text: 'O seu artigo foi publicado com sucessso!'
+                        }).show();
                     })
             }
         },

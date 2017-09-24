@@ -36,6 +36,9 @@ Route::get('/notifications',[
 Route::post('/create/post',[
     'uses' => 'PostsController@store'
 ]);
+//Route::post('/create/postt',function (){
+//    return "Rota teste good. for Get";
+//});
 
 
 Auth::routes();
