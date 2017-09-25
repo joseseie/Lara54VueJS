@@ -11,7 +11,7 @@ class FeedsController extends Controller
     public function feed()
     {
         $friends = Auth::user()->friends();
-
+        
         $feed = array();
 
         foreach ($friends as $friend):

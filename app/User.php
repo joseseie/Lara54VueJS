@@ -6,10 +6,12 @@ use App\Traints\Friendable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Searchable;
 //    use Friendable;
 
 
