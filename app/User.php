@@ -14,6 +14,7 @@ class User extends Authenticatable
     use Searchable;
 //    use Friendable;
 
+    // public $with = ['posts'];
 
     /**
      * The attributes that are mass assignable.

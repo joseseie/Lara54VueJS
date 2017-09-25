@@ -17,6 +17,7 @@ export const store = new Vuex.Store({
                 return state.nots.length
             },
             all_posts(state)  {
+                console.log("fgf seie mjkjio yuyumyu")                
                 return state.posts
             }
         },
@@ -25,6 +26,7 @@ export const store = new Vuex.Store({
                 state.nots.push(not)
             },
             add_post(state,post){
+                console.log({"Adding post: ": post})
                 state.posts.push(post)
             }
         },

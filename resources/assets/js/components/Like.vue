@@ -2,6 +2,7 @@
 
     <div>
         <hr>
+
         <p class="text-center">
             //Avatars of post likes
         </p>
@@ -13,9 +14,7 @@
         </buttom>
 
         <buttom class="btn btn-danger">
-
             Unlike this post
-
         </buttom>        
 
     </div>
@@ -28,7 +27,16 @@
         mounted() {
 
         },
-        props: [id]
+        props: ['id'],
+
+        computed: {
+            post() {
+                return this.$store.state.posts.find( ( post ) => {
+                    return post.id === this.id
+              })
+            }
+
+        }
 
     }
 </script>

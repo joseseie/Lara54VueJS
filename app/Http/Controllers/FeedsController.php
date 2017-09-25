@@ -17,15 +17,16 @@ class FeedsController extends Controller
         foreach ($friends as $friend):
 
             foreach ($friend->posts as $post):
-        
+                
                 array_push($feed,$post);
 
             endforeach;
 
         endforeach;
 
+        // return count($feed);
         return $feed;
-
+        
     }
 
 }
