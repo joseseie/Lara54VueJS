@@ -52193,6 +52193,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
+        likes2: function likes2() {
+            var likers = [];
+
+            if (this.likes != null) {
+                this.likes.forEach(function (like) {
+                    likers.push(like.user.id);
+                });
+            }
+
+            return likers;
+        },
+        auth_user_likes_post: function auth_user_likes_post() {
+
+            var check_index = this.likes2.indexOf(this.$store.state.auth_user.id);
+
+            if (check_index == -1) return false;else return true;
+        },
         post: function post() {
             var _this = this;
 
@@ -52243,13 +52260,13 @@ var render = function() {
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _c("button", { staticClass: "btn btn-primary" }, [
-        _vm._v("\n        Like this post\n    ")
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger" }, [
-        _vm._v("\n        Unlike this post\n    ")
-      ])
+      !_vm.auth_user_likes_post
+        ? _c("button", { staticClass: "btn btn-primary" }, [
+            _vm._v("\n        Like this post\n    ")
+          ])
+        : _c("button", { staticClass: "btn btn-danger" }, [
+            _vm._v("\n        Unlike this post\n    ")
+          ])
     ],
     2
   )

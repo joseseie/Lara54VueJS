@@ -41,9 +41,17 @@ Route::get('/feed/likes/{post_id}',[
     'uses' => 'FeedsController@feeds_like',
     'as' => 'feed'
 ]);
+
 Route::get('/get_auth_user_data',function (){
     return Auth::user();
 });
+
+Route::get('/like',[
+    'uses' => 'LikeController@like',
+]);
+Route::get('/unlike',[
+    'uses' => 'LikeController@unlike',
+]);
 
 
 Route::post('/create/post',[

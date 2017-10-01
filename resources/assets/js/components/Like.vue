@@ -11,11 +11,11 @@
 
         <hr>
 
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" v-if="!auth_user_likes_post">
             Like this post
         </button>
 
-        <button class="btn btn-danger">
+        <button class="btn btn-danger" v-else>
             Unlike this post
         </button>
 
@@ -37,6 +37,30 @@
 
         },
         computed: {
+            likes2() {
+                var likers = []
+
+                if(this.likes != null)
+                {
+                    this.likes.forEach((like) => {
+                        likers.push(like.user.id);
+                    })
+                }
+
+                return likers
+            },
+            auth_user_likes_post() {
+
+                var check_index = this.likes2.indexOf(
+                    this.$store.state.auth_user.id
+                )
+
+                if(check_index == -1)
+                    return false
+                else
+                    return true;
+
+            },
             post() {
 
                 return this.$store.state.posts.find( ( post ) => {
