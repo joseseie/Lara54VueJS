@@ -42,9 +42,10 @@ export const store = new Vuex.Store({
             },
 
             unlike_post(state,payload) {
-                var post =state.posts.find( (p) => {
+
+                var post = state.posts.find( (p) => {
                     return p.id === payload.post_id
-                }),
+                })
 
                 var like = post.likes.find(( l ) => {
                     return l.id === payload.like_id

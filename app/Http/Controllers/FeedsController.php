@@ -25,7 +25,16 @@ class FeedsController extends Controller
 
         endforeach;
 
-        // return count($feed);
+
+        foreach (Auth::user()->posts as $post):
+            array_push($feed,$post);
+        endforeach;
+
+        usort($feed,function ($sp1,$sp2) {
+            return $sp1->id > $sp2->id;
+        });
+
+
         return $feed;
         
     }
