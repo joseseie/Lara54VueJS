@@ -49,9 +49,9 @@
             posts_likes(){
                 this.$http.get('/feed/likes/'+this.id)
                     .then((response) => {
-                        console.log(response)
+
                         this.likes = response.body;
-                        console.log({"Post": "Post com id "+this.id,"Likes":response});
+
                     })
 
 

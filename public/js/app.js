@@ -52206,9 +52206,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.$http.get('/feed/likes/' + this.id).then(function (response) {
-                console.log(response);
+
                 _this2.likes = response.body;
-                console.log({ "Post": "Post com id " + _this2.id, "Likes": response });
             });
         }
     }
