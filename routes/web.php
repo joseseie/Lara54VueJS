@@ -46,10 +46,10 @@ Route::get('/get_auth_user_data',function (){
     return Auth::user();
 });
 
-Route::get('/like',[
+Route::get('/like/{id}',[
     'uses' => 'LikeController@like',
 ]);
-Route::get('/unlike',[
+Route::get('/unlike/{id}',[
     'uses' => 'LikeController@unlike',
 ]);
 

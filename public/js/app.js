@@ -52226,7 +52226,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.likes = response.body;
             });
-        }
+        },
+        like: function like() {
+            var _this3 = this;
+
+            this.$http.get('/like/' + this.id).then(function (resp) {
+
+                _this3.$store.commit('update_post_likes', {
+                    id: _this3.id,
+                    like: resp.body
+                });
+                new Noty({
+                    type: 'info',
+                    layout: 'bottomLeft',
+                    text: 'Post gostado com sucesso.!'
+                }).show();
+            });
+        },
+        unlike: function unlike() {}
     }
 
 });
@@ -52261,12 +52278,23 @@ var render = function() {
       _c("hr"),
       _vm._v(" "),
       !_vm.auth_user_likes_post
-        ? _c("button", { staticClass: "btn btn-primary" }, [
-            _vm._v("\n        Like this post\n    ")
-          ])
-        : _c("button", { staticClass: "btn btn-danger" }, [
-            _vm._v("\n        Unlike this post\n    ")
-          ])
+        ? _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              on: {
+                click: function($event) {
+                  _vm.like()
+                }
+              }
+            },
+            [_vm._v("\n        Like this post\n    ")]
+          )
+        : _c(
+            "button",
+            { staticClass: "btn btn-danger", on: { click: _vm.unlike } },
+            [_vm._v("\n        Unlike this post\n    ")]
+          )
     ],
     2
   )
@@ -53058,6 +53086,13 @@ var store = new __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].Store({
         auth_user_data: function auth_user_data(state, user_data) {
 
             state.auth_user = user_data;
+        },
+        update_post_likes: function update_post_likes(state, payload) {
+            var post = state.posts.find(function (p) {
+                return p.id === payload.id;
+            });
+
+            // post.likes.push(payload.like)
         }
     },
     actions: {}

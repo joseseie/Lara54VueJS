@@ -11,11 +11,11 @@
 
         <hr>
 
-        <button class="btn btn-primary" v-if="!auth_user_likes_post">
+        <button class="btn btn-primary" v-if="!auth_user_likes_post" @click="like()">
             Like this post
         </button>
 
-        <button class="btn btn-danger" v-else>
+        <button class="btn btn-danger" v-else @click="unlike">
             Unlike this post
         </button>
 
@@ -67,7 +67,6 @@
                     return post.id === this.id
               })
             }
-
         },
         methods: {
             posts_likes(){
@@ -78,6 +77,24 @@
 
                     })
 
+
+            },
+            like() {
+                this.$http.get('/like/'+this.id)
+                    .then( ( resp ) => {
+
+                        this.$store.commit('update_post_likes', {
+                            id: this.id,
+                            like: resp.body
+                        })
+                        new Noty({
+                            type: 'info',
+                            layout: 'bottomLeft',
+                            text: 'Post gostado com sucesso.!'
+                        }).show();
+                });
+            },
+            unlike() {
 
             }
         }
