@@ -26,4 +26,13 @@ class Post extends Model
     }
 
 
+    /*Aditional Methods added*/
+
+    public function likesOfThisPost()
+    {
+        dd($this->id);
+    }
+
+    /*The aditional methods ends here*/
+
 }
