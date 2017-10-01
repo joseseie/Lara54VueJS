@@ -37,6 +37,10 @@ Route::get('/feed',[
     'uses' => 'FeedsController@feed',
     'as' => 'feed'
 ]);
+Route::get('/feed/likes/{post_id}',[
+    'uses' => 'FeedsController@feeds_like',
+    'as' => 'feed'
+]);
 Route::post('/create/post',[
     'uses' => 'PostsController@store'
 ]);

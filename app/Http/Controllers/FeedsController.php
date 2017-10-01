@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class FeedsController extends Controller
         foreach ($friends as $friend):
 
             foreach ($friend->posts as $post):
-                $post->likesOfThisPost();
+
                 array_push($feed,$post);
 
             endforeach;
@@ -27,6 +28,11 @@ class FeedsController extends Controller
         // return count($feed);
         return $feed;
         
+    }
+
+    public function feeds_like($post_id)
+    {
+        return Like::where('post_id',$post_id)->get();
     }
 
 }

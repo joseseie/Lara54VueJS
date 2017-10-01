@@ -51805,9 +51805,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {},
+    mounted: function mounted() {
+        this.posts_likes();
+    },
 
     props: ['id'],
+    data: function data() {
+        return {
+            likes: null
+        };
+    },
 
     computed: {
         post: function post() {
@@ -51819,6 +51826,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
+        posts_likes: function posts_likes() {
+            var _this2 = this;
+
+            this.$http.get('/feed/likes/' + this.id).then(function (response) {
+                //                        response.body.forEach((post) => {
+                //
+                //                            this.$store.commit('add_post',post)
+                //
+                //                        })
+                console.log({ "Post": "Post com id " + _this2.id, "Likes": response });
+            });
+        },
         mostrarId: function mostrarId() {
             alert("Clicou no post com id: " + this.id);
             console.log({ 'user_of_post': this.post.user });
