@@ -54019,7 +54019,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mount: function mount() {
+    mounted: function mounted() {
 
         this.get_auth_user_data();
     },

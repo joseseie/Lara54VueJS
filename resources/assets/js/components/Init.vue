@@ -11,7 +11,7 @@
 
     export default {
 
-        mount() {
+        mounted() {
 
             this.get_auth_user_data();
 
