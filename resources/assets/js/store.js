@@ -17,7 +17,6 @@ export const store = new Vuex.Store({
                 return state.nots.length
             },
             all_posts(state)  {
-                console.log("fgf seie mjkjio yuyumyu")                
                 return state.posts
             }
         },

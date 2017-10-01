@@ -12,8 +12,6 @@
                     layout: 'bottomLeft',
                     text: 'Os deus Dados de perfil foram actualizados com sucesso'
                 }).show();
-
-                console.log('Notificando o utilizador')                
             }
         }
 
