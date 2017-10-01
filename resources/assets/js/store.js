@@ -7,7 +7,8 @@ export const store = new Vuex.Store({
 
         state: {
             nots: [],
-            posts: []
+            posts: [],
+            auth_user: []
         },
         getters: {
             all_nots(state) {
@@ -27,6 +28,10 @@ export const store = new Vuex.Store({
             add_post(state,post){
                 console.log({"Adding post: ": post})
                 state.posts.push(post)
+            },
+            auth_user_data(state,user_data) {
+
+                state.auth_user = user_data
             }
         },
         actions: {
