@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traints\PostsTrait;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use PostsTrait;
 
     public $with = ['user']; //Ja vai trazer o post junto com user como padrao.
     // public $with = ['user','likes']; //Ja vai trazer o post junto com user como padrao.

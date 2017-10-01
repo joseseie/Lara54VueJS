@@ -43,7 +43,8 @@
         },
         methods: {
             mostrarId(){
-                alert("Clicou no post com id: "+this.id+"\n"+this.post.user)
+                alert("Clicou no post com id: "+this.id)
+                console.log({'user_of_post': this.post.user})
             }
         }
 

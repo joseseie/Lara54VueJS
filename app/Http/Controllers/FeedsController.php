@@ -17,7 +17,7 @@ class FeedsController extends Controller
         foreach ($friends as $friend):
 
             foreach ($friend->posts as $post):
-                
+                $post->likesOfThisPost;
                 array_push($feed,$post);
 
             endforeach;
