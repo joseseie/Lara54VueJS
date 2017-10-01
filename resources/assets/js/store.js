@@ -39,6 +39,21 @@ export const store = new Vuex.Store({
                 })
 
                 // post.likes.push(payload.like)
+            },
+
+            unlike_post(state,payload) {
+                var post =state.posts.find( (p) => {
+                    return p.id === payload.post_id
+                }),
+
+                var like = post.likes.find(( l ) => {
+                    return l.id === payload.like_id
+                })
+
+                var index = post.likes.indeOf(like)
+
+                post.likes.splice(index,l);
+
             }
         },
         actions: {

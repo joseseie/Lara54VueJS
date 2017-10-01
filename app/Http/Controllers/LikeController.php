@@ -25,12 +25,12 @@ class LikeController extends Controller
     {
         $post = Post::find($id);
 
-        Like::where('user_id',Auth::id())
+        $like = Like::where('user_id',Auth::id())
             ->where('post_id',$post->id)
-            ->first()
-            ->delete();
+            ->first();
 
-        return 1;
+        $like->delete();
+        return $like->id;
 
     }
 
