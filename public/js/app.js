@@ -51802,7 +51802,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -51830,17 +51829,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.$http.get('/feed/likes/' + this.id).then(function (response) {
-                //                        response.body.forEach((post) => {
-                //
-                //                            this.$store.commit('add_post',post)
-                //
-                //                        })
+                console.log(response);
+                _this2.likes = response.body;
                 console.log({ "Post": "Post com id " + _this2.id, "Likes": response });
             });
-        },
-        mostrarId: function mostrarId() {
-            alert("Clicou no post com id: " + this.id);
-            console.log({ 'user_of_post': this.post.user });
         }
     }
 
@@ -51859,7 +51851,7 @@ var render = function() {
     [
       _c("hr"),
       _vm._v(" "),
-      _vm._l(_vm.post.likes, function(like) {
+      _vm._l(_vm.likes, function(like) {
         return _c("p", { staticClass: "text-center" }, [
           _c("img", {
             staticClass: "avatar-like",
@@ -51875,18 +51867,9 @@ var render = function() {
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          on: {
-            click: function($event) {
-              _vm.mostrarId()
-            }
-          }
-        },
-        [_vm._v("\n        Like this post\n    ")]
-      ),
+      _c("button", { staticClass: "btn btn-primary" }, [
+        _vm._v("\n        Like this post\n    ")
+      ]),
       _vm._v(" "),
       _c("button", { staticClass: "btn btn-danger" }, [
         _vm._v("\n        Unlike this post\n    ")
@@ -51925,15 +51908,16 @@ var render = function() {
                 attrs: { src: post.user.avatar, width: "40px", height: "40px" }
               }),
               _vm._v(
-                "\n                    " + _vm._s(post.user.name) + "        "
+                "\n                    " +
+                  _vm._s(post.user.name) +
+                  "\n\n                    "
               ),
-              _c("h2", [_vm._v(_vm._s(post.user.id))]),
-              _vm._v(" "),
               _c("span", { staticClass: "pull-right" }, [
                 _vm._v(
-                  "\n                        " + _vm._s(post.created_at) + ", "
-                ),
-                _c("h1", [_vm._v("Id do post: " + _vm._s(post.id))])
+                  "\n                        " +
+                    _vm._s(post.created_at) +
+                    "\n                    "
+                )
               ])
             ]),
             _vm._v(" "),
@@ -53707,7 +53691,7 @@ exports = module.exports = __webpack_require__(66)(undefined);
 
 
 // module
-exports.push([module.i, "\n.avatar-likes {\n    border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n.avatar-like {\n    border-radius: 50%;\n}\n", ""]);
 
 // exports
 

@@ -11,10 +11,10 @@
                     <div class="panel-heading">
 
                         <img :src="post.user.avatar" width="40px" height="40px"/>
-                        {{ post.user.name }}        <h2>{{ post.user.id }}</h2>
+                        {{ post.user.name }}
 
                         <span class="pull-right">
-                            {{ post.created_at }}, <h1>Id do post: {{ post.id }}</h1>
+                            {{ post.created_at }}
                         </span>
 
                     </div>     
