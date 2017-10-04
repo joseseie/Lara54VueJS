@@ -52575,6 +52575,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 var algoliasearch = __webpack_require__(57);
@@ -52585,14 +52591,18 @@ var index = client.initIndex('users');
     mounted: function mounted() {},
     data: function data() {
         return {
-            query: ''
+            query: '',
+            results: []
         };
     },
 
     methods: {
         search: function search() {
+            var _this = this;
+
             index.search(this.query, function (err, content) {
-                console.log(err, content);
+                //                    console.log(err,content);
+                _this.results = content.hits;
             });
         }
     }
@@ -57882,7 +57892,21 @@ var render = function() {
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
-        _c("div", { staticClass: "row" })
+        _vm.results.length
+          ? _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.results, function(user) {
+                return _c("div", { staticClass: "text-center" }, [
+                  _c("img", { attrs: { src: "user.avatar", alt: "" } }),
+                  _vm._v(" "),
+                  _c("h4", { staticClass: "text-center" }, [
+                    _vm._v(" " + _vm._s(user.name) + " ")
+                  ])
+                ])
+              })
+            )
+          : _vm._e()
       ])
     ])
   ])

@@ -10,8 +10,14 @@
 
                 <hr>
 
-                <div class="row">
+                <div class="row" v-if="results.length">
 
+                    <div class="text-center" v-for="user in results">
+
+                        <img src="user.avatar" alt=""/>
+
+                        <h4 class="text-center"> {{ user.name }} </h4>
+                    </div>
 
                 </div>
             </div>
@@ -35,12 +41,14 @@
         data() {
             return {
                 query: '',
+                results: []
             }
         },
         methods: {
             search() {
                 index.search(this.query, (err,content) => {
-                    console.log(err,content);
+//                    console.log(err,content);
+                    this.results = content.hits;
                 })
             }
         }
