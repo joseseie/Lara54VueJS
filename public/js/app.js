@@ -52582,10 +52582,19 @@ var client = algoliasearch("YIM6IPJ3NC", "e30124dc583621e14522fff284813a4c");
 var index = client.initIndex('users');
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        index.search('kati', function (err, content) {
-            console.log(err, content);
-        });
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            query: ''
+        };
+    },
+
+    methods: {
+        search: function search() {
+            index.search(this.query, function (err, content) {
+                console.log(err, content);
+            });
+        }
     }
 });
 
@@ -57837,29 +57846,48 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-6 colg-lg-offset-3" }, [
-          _c("input", {
-            staticClass: "input-lg form-control",
-            attrs: { type: "text", placeholder: "Search for other users" }
-          }),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" })
-        ])
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-6 colg-lg-offset-3" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.query,
+              expression: "query"
+            }
+          ],
+          staticClass: "input-lg form-control",
+          attrs: { type: "text", placeholder: "Search for other users" },
+          domProps: { value: _vm.query },
+          on: {
+            keyup: function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13)
+              ) {
+                return null
+              }
+              _vm.search()
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.query = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" })
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -6,7 +6,7 @@
 
             <div class="col-lg-6 colg-lg-offset-3">
 
-                <input type="text" class="input-lg form-control" placeholder="Search for other users"/>
+                <input type="text" class="input-lg form-control" placeholder="Search for other users" v-model="query" @keyup.enter="search()"/>
 
                 <hr>
 
@@ -30,9 +30,19 @@
 
     export default {
         mounted() {
-            index.search('kati', (err,content) => {
-                console.log(err,content);
-            })
+
+        },
+        data() {
+            return {
+                query: '',
+            }
+        },
+        methods: {
+            search() {
+                index.search(this.query, (err,content) => {
+                    console.log(err,content);
+                })
+            }
         }
     }
 
