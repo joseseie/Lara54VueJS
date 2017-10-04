@@ -18,6 +18,8 @@
 
         <init></init>
 
+
+
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -76,6 +78,8 @@
                 </div>
             </div>
         </nav>
+
+        <search></search>
 
         @yield('content')
 
