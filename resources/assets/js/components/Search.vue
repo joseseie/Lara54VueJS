@@ -14,7 +14,7 @@
 
                     <div class="text-center" v-for="user in results">
 
-                        <img src="user.avatar" alt=""/>
+                        <img src="user.avatar" alt="" width="50px"  height="50px" class="search-user"/>
 
                         <h4 class="text-center"> {{ user.name }} </h4>
                     </div>
@@ -57,7 +57,11 @@
 
 </script>
 
-
+<style>
+    .search-user {
+        border-radius: 50%;
+    }
+</style>
 
 
 

@@ -79,7 +79,12 @@
             </div>
         </nav>
 
-        <search></search>
+        {{-- Componente de pesquisa de utilizadores so vai ser mostrado se o utilizador estiver autenticado.--}}
+        @if(Auth::check())
+
+            <search></search>
+
+        @endif
 
         @yield('content')
 
